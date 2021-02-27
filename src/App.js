@@ -63,6 +63,9 @@ function App() {
                 <Route exact path="/">
                   <Home credential={auth} profile={profile} />
                 </Route>
+                <Route exact path="/record">
+                  <Home credential={auth} profile={profile} />
+                </Route>
                 <Route exact path="/user/:id">
                   <UserControlPanel credential={auth} profile={profile} />
                 </Route>

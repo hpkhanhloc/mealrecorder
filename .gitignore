@@ -13,6 +13,7 @@
 .rules
 .log
 .eslintcache
+/meal_recorder_ML/annotations
 
 # misc
 .DS_Store

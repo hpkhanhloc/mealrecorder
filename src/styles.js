@@ -103,6 +103,20 @@ const useStyles = () => {
       width: theme.spacing(24),
       height: theme.spacing(24),
     },
+    responsiveImage: {
+      [theme.breakpoints.down("sm")]: {
+        width: 200,
+        height: 150,
+      },
+      [theme.breakpoints.up("sm")]: {
+        width: 400,
+        height: 300,
+      },
+      [theme.breakpoints.up("lg")]: {
+        width: 800,
+        height: 600,
+      },
+    },
   }));
 };
 
