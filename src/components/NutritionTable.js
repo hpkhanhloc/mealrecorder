@@ -41,42 +41,24 @@ const NutritionTable = (props) => {
           const deserts = response.data.items;
           const totalNutrition = deserts.reduce((acc, item) => {
             return {
-              calories: Number(
-                acc.calories ? acc.calories : 0 + item.calories
-              ).toFixed(1),
-              sugar: Number(
-                acc.sugar_g ? acc.sugar_g : 0 + item.sugar_g
-              ).toFixed(1),
-              fiber: Number(
-                acc.fiber_g ? acc.fiber_g : 0 + item.fiber_g
-              ).toFixed(1),
-              sodium: Number(
-                acc.sodium_mg ? acc.sodium_mg : 0 + item.sodium_mg
-              ).toFixed(1),
-              potassium: Number(
-                acc.potassium_mg ? acc.potassium_mg : 0 + item.potassium_mg
-              ).toFixed(1),
-              fat_saturated: Number(
-                acc.fat_saturated_g
-                  ? acc.fat_saturated_g
-                  : 0 + item.fat_saturated_g
-              ).toFixed(1),
-              fat_total: Number(
-                acc.fat_total_g ? acc.calories : 0 + item.fat_total_g
-              ).toFixed(1),
-              cholesterol: Number(
-                acc.cholesterol_mg
-                  ? acc.cholesterol_mg
-                  : 0 + item.cholesterol_mg
-              ).toFixed(1),
-              protein: Number(
-                acc.protein_g ? acc.protein_g : 0 + item.protein_g
-              ).toFixed(1),
-              carbohydrates_total: Number(
-                acc.carbohydrates_total_g
-                  ? acc.carbohydrates_total_g
-                  : 0 + item.carbohydrates_total_g
-              ).toFixed(1),
+              calories: acc.calories ? acc.calories : 0 + item.calories,
+              sugar: acc.sugar_g ? acc.sugar_g : 0 + item.sugar_g,
+              fiber: acc.fiber_g ? acc.fiber_g : 0 + item.fiber_g,
+              sodium: acc.sodium_mg ? acc.sodium_mg : 0 + item.sodium_mg,
+              potassium: acc.potassium_mg
+                ? acc.potassium_mg
+                : 0 + item.potassium_mg,
+              fat_saturated: acc.fat_saturated_g
+                ? acc.fat_saturated_g
+                : 0 + item.fat_saturated_g,
+              fat_total: acc.fat_total_g ? acc.calories : 0 + item.fat_total_g,
+              cholesterol: acc.cholesterol_mg
+                ? acc.cholesterol_mg
+                : 0 + item.cholesterol_mg,
+              protein: acc.protein_g ? acc.protein_g : 0 + item.protein_g,
+              carbohydrates_total: acc.carbohydrates_total_g
+                ? acc.carbohydrates_total_g
+                : 0 + item.carbohydrates_total_g,
             };
           }, {});
           setNutrition(totalNutrition);
@@ -220,52 +202,68 @@ const NutritionTable = (props) => {
                 <TableBody>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>Calories</TableCell>
-                    <TableCell align="right">{nutrition.calories}</TableCell>
+                    <TableCell align="right">
+                      {Number(nutrition.calories).toFixed(1)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>Sugar(g)</TableCell>
-                    <TableCell align="right">{nutrition.sugar}</TableCell>
+                    <TableCell align="right">
+                      {Number(nutrition.sugar).toFixed(1)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>Fiber(g)</TableCell>
-                    <TableCell align="right">{nutrition.fiber}</TableCell>
+                    <TableCell align="right">
+                      {Number(nutrition.fiber).toFixed(1)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>Sodium(mg)</TableCell>
-                    <TableCell align="right">{nutrition.sodium}</TableCell>
+                    <TableCell align="right">
+                      {Number(nutrition.sodium).toFixed(1)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>Potassium(mg)</TableCell>
-                    <TableCell align="right">{nutrition.potassium}</TableCell>
+                    <TableCell align="right">
+                      {Number(nutrition.potassium).toFixed(1)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>
                       Fat saturated(g)
                     </TableCell>
                     <TableCell align="right">
-                      {nutrition.fat_saturated}
+                      {Number(nutrition.fat_saturated).toFixed(1)}
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>Fat total(g)</TableCell>
-                    <TableCell align="right">{nutrition.fat_total}</TableCell>
+                    <TableCell align="right">
+                      {Number(nutrition.fat_total).toFixed(1)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>
                       Cholesterol(mg)
                     </TableCell>
-                    <TableCell align="right">{nutrition.cholesterol}</TableCell>
+                    <TableCell align="right">
+                      {Number(nutrition.cholesterol).toFixed(1)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>Protein(g)</TableCell>
-                    <TableCell align="right">{nutrition.protein}</TableCell>
+                    <TableCell align="right">
+                      {Number(nutrition.protein).toFixed(1)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ width: 200 }}>
                       Carbohydrates total(g)
                     </TableCell>
                     <TableCell align="right">
-                      {nutrition.carbohydrates_total}
+                      {Number(nutrition.carbohydrates_total).toFixed(1)}
                     </TableCell>
                   </TableRow>
                 </TableBody>
@@ -288,19 +286,35 @@ const NutritionTable = (props) => {
                   <TableCell>Carbohydrates total(g)</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell align="center">{nutrition.calories}</TableCell>
-                  <TableCell align="center">{nutrition.sugar}</TableCell>
-                  <TableCell align="center">{nutrition.fiber}</TableCell>
-                  <TableCell align="center">{nutrition.sodium}</TableCell>
-                  <TableCell align="center">{nutrition.potassium}</TableCell>
                   <TableCell align="center">
-                    {nutrition.fat_saturated}
+                    {Number(nutrition.calories).toFixed(1)}
                   </TableCell>
-                  <TableCell align="center">{nutrition.fat_total}</TableCell>
-                  <TableCell align="center">{nutrition.cholesterol}</TableCell>
-                  <TableCell align="center">{nutrition.protein}</TableCell>
                   <TableCell align="center">
-                    {nutrition.carbohydrates_total}
+                    {Number(nutrition.sugar).toFixed(1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {Number(nutrition.fiber).toFixed(1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {Number(nutrition.sodium).toFixed(1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {Number(nutrition.potassium).toFixed(1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {Number(nutrition.fat_saturated).toFixed(1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {Number(nutrition.fat_total).toFixed(1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {Number(nutrition.cholesterol).toFixed(1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {Number(nutrition.protein).toFixed(1)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {Number(nutrition.carbohydrates_total).toFixed(1)}
                   </TableCell>
                 </TableRow>
               </TableBody>

@@ -129,37 +129,51 @@ const UserDiary = (props) => {
                   <TableBody>
                     <TableRow>
                       <TableCell style={{ width: 200 }}>Calories</TableCell>
-                      <TableCell align="right">{data.calories}</TableCell>
+                      <TableCell align="right">
+                        {Number(data.calories).toFixed(1)}
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell style={{ width: 200 }}>Sugar(g)</TableCell>
-                      <TableCell align="right">{data.sugar}</TableCell>
+                      <TableCell align="right">
+                        {Number(data.sugar).toFixed(1)}
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell style={{ width: 200 }}>Fiber(g)</TableCell>
-                      <TableCell align="right">{data.fiber}</TableCell>
+                      <TableCell align="right">
+                        {Number(data.fiber).toFixed(1)}
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell style={{ width: 200 }}>Sodium(mg)</TableCell>
-                      <TableCell align="right">{data.sodium}</TableCell>
+                      <TableCell align="right">
+                        {Number(data.sodium).toFixed(1)}
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell style={{ width: 200 }}>
                         Potassium(mg)
                       </TableCell>
-                      <TableCell align="right">{data.potassium}</TableCell>
+                      <TableCell align="right">
+                        {Number(data.potassium).toFixed(1)}
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell style={{ width: 200 }}>
                         Fat saturated(g)
                       </TableCell>
-                      <TableCell align="right">{data.fat_saturated}</TableCell>
+                      <TableCell align="right">
+                        {Number(data.fat_saturated).toFixed(1)}
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell style={{ width: 200 }}>
                         Cholesterol(mg)
                       </TableCell>
-                      <TableCell align="right">{data.cholesterol}</TableCell>
+                      <TableCell align="right">
+                        {Number(data.cholesterol).toFixed(1)}
+                      </TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
@@ -182,13 +196,27 @@ const UserDiary = (props) => {
                       <TableCell>Cholesterol(mg)</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell align="center">{data.calories}</TableCell>
-                      <TableCell align="center">{data.sugar}</TableCell>
-                      <TableCell align="center">{data.fiber}</TableCell>
-                      <TableCell align="center">{data.sodium}</TableCell>
-                      <TableCell align="center">{data.potassium}</TableCell>
-                      <TableCell align="center">{data.fat_saturated}</TableCell>
-                      <TableCell align="center">{data.cholesterol}</TableCell>
+                      <TableCell align="center">
+                        {Number(data.calories).toFixed(1)}
+                      </TableCell>
+                      <TableCell align="center">
+                        {Number(data.sugar).toFixed(1)}
+                      </TableCell>
+                      <TableCell align="center">
+                        {Number(data.fiber).toFixed(1)}
+                      </TableCell>
+                      <TableCell align="center">
+                        {Number(data.sodium).toFixed(1)}
+                      </TableCell>
+                      <TableCell align="center">
+                        {Number(data.potassium).toFixed(1)}
+                      </TableCell>
+                      <TableCell align="center">
+                        {Number(data.fat_saturated).toFixed(1)}
+                      </TableCell>
+                      <TableCell align="center">
+                        {Number(data.cholesterol).toFixed(1)}
+                      </TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
