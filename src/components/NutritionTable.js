@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import moment from "moment";
 import {
   Box,
   Button,
@@ -15,16 +16,21 @@ import {
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setAlert } from "../actions/alertActions";
+import { handleCreateOrUpdateRecord } from "../actions/recordAction";
 import { API_KEY } from "../env/calorieNinjas";
 
 const NutritionTable = (props) => {
-  const { foodLabels, setFoodLabels } = props;
+  const { credential, foodLabels, setFoodLabels } = props;
   const [nutrition, setNutrition] = useState();
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const config = {
     headers: { "X-Api-Key": API_KEY },
   };
+
+  useEffect(() => {
+    if (foodLabels.length === 0) setNutrition();
+  }, [foodLabels]);
 
   const handleGetNutritionData = async () => {
     if (foodLabels.length > 0) {
@@ -89,6 +95,14 @@ const NutritionTable = (props) => {
     );
   };
 
+  const handleRecord = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    const recordID = `${credential.uid}_${moment().format("DDMMYYYY")}`;
+    dispatch(handleCreateOrUpdateRecord(recordID, nutrition));
+    setLoading(false);
+  };
+
   return (
     <>
       {foodLabels.length > 0 && (
@@ -142,6 +156,7 @@ const NutritionTable = (props) => {
                 variant="contained"
                 color="primary"
                 disabled={loading || !nutrition}
+                onClick={handleRecord}
               >
                 Record
               </Button>
@@ -169,6 +184,7 @@ const NutritionTable = (props) => {
                     variant="contained"
                     color="primary"
                     disabled={loading || !nutrition}
+                    onClick={handleRecord}
                   >
                     Record
                   </Button>

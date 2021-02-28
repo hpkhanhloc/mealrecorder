@@ -17,7 +17,7 @@ const Home = (props) => {
   return (
     <Container>
       {credential.uid ? (
-        <MealRecorder credential={credential} profile={profile} />
+        <MealRecorder credential={credential} />
       ) : (
         <>
           <Box display={{ xs: "none", sm: "flex" }}>

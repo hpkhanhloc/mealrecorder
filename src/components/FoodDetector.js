@@ -35,6 +35,10 @@ const FoodDetector = (props) => {
     setImageDemensions({ width: IMAGE_WIDTH, height: IMAGE_HEIGHT });
   }, []);
 
+  useEffect(() => {
+    setFoodLabels([]);
+  }, [data]);
+
   const handleClickOpen = () => {
     if (document.getElementById("canvas") != null) {
       document.getElementById("canvas").outerHTML = "";
