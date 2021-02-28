@@ -32,13 +32,15 @@ const UserDiary = (props) => {
   const { credential } = props;
   const [selectedDate, setSelectedDate] = useState(moment());
   const [data, setData] = useState();
-  const [dominentNutrition, setdominentNutrition] = useState();
+  const [dominentNutrition, setDominentNutrition] = useState();
   const [targetItem, setTargetItem] = useState();
   const userID = useParams().id;
   const firestore = getFirebase().firestore();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setData();
+    setDominentNutrition();
     if (selectedDate) {
       const recordID = `${credential.uid}_${selectedDate.format("DDMMYYYY")}`;
       firestore
@@ -49,7 +51,7 @@ const UserDiary = (props) => {
           if (doc.exists) {
             const data = doc.data();
             setData(data);
-            setdominentNutrition([
+            setDominentNutrition([
               {
                 name: "Protein",
                 value: data.protein,
