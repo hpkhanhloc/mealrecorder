@@ -79,7 +79,7 @@ const UserControlPanel = (props) => {
         alert: true,
         severity: "warning",
         alertMessage:
-          "Access denied! You have not logged in or have not permission to edit blog.",
+          "Access denied! You have not logged in or have not permission.",
       })
     );
     return <Redirect to="/" />;

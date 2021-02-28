@@ -10,6 +10,8 @@ import {
   Tooltip,
 } from "@material-ui/core";
 import * as tf from "@tensorflow/tfjs";
+import { setAlert } from "../actions/alertActions";
+import { useDispatch } from "react-redux";
 import PhotoCameraIcon from "@material-ui/icons/PhotoCamera";
 import { CLASSESDIR } from "../env/classesDir";
 import { useStyles } from "../styles";
@@ -27,6 +29,7 @@ const FoodDetector = (props) => {
   const [src, setSrc] = useState(null);
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState();
+  const dispatch = useDispatch();
   const classes = useStyles()();
 
   useEffect(() => {
@@ -147,18 +150,22 @@ const FoodDetector = (props) => {
           return { label: object.label, quantity: null };
         })
       );
+    } else {
+      dispatch(
+        setAlert({
+          alert: true,
+          severity: "warning",
+          alertMessage:
+            "Sorry! Current application version can only detect 10 kinds of food: rice, croissant, hamburger, pizza, sandwiches, fried chicken, steak, simmered pork, green salad and french fries.",
+        })
+      );
     }
   };
 
   return (
     <Box m={1} display="flex" flexDirection="column" justifyContent="center">
       <Box p={1} display="flex" id="image_container" justifyContent="center">
-        <img
-          id="image"
-          src={src}
-          className={classes.responsiveImage}
-          alt="upload image for detecting"
-        />
+        <img id="image" src={src} className={classes.responsiveImage} />
       </Box>
       <Tooltip title="Upload food image">
         <IconButton

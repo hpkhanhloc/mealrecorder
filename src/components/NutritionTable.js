@@ -41,24 +41,42 @@ const NutritionTable = (props) => {
           const deserts = response.data.items;
           const totalNutrition = deserts.reduce((acc, item) => {
             return {
-              calories: acc.calories ? acc.calories : 0 + item.calories,
-              sugar: acc.sugar_g ? acc.sugar_g : 0 + item.sugar_g,
-              fiber: acc.fiber_g ? acc.fiber_g : 0 + item.fiber_g,
-              sodium: acc.sodium_mg ? acc.sodium_mg : 0 + item.sodium_mg,
-              potassium: acc.potassium_mg
-                ? acc.potassium_mg
-                : 0 + item.potassium_mg,
-              fat_saturated: acc.fat_saturated_g
-                ? acc.fat_saturated_g
-                : 0 + item.fat_saturated_g,
-              fat_total: acc.fat_total_g ? acc.calories : 0 + item.fat_total_g,
-              cholesterol: acc.cholesterol_mg
-                ? acc.cholesterol_mg
-                : 0 + item.cholesterol_mg,
-              protein: acc.protein_g ? acc.protein_g : 0 + item.protein_g,
-              carbohydrates_total: acc.carbohydrates_total_g
-                ? acc.carbohydrates_total_g
-                : 0 + item.carbohydrates_total_g,
+              calories: Number(
+                acc.calories ? acc.calories : 0 + item.calories
+              ).toFixed(1),
+              sugar: Number(
+                acc.sugar_g ? acc.sugar_g : 0 + item.sugar_g
+              ).toFixed(1),
+              fiber: Number(
+                acc.fiber_g ? acc.fiber_g : 0 + item.fiber_g
+              ).toFixed(1),
+              sodium: Number(
+                acc.sodium_mg ? acc.sodium_mg : 0 + item.sodium_mg
+              ).toFixed(1),
+              potassium: Number(
+                acc.potassium_mg ? acc.potassium_mg : 0 + item.potassium_mg
+              ).toFixed(1),
+              fat_saturated: Number(
+                acc.fat_saturated_g
+                  ? acc.fat_saturated_g
+                  : 0 + item.fat_saturated_g
+              ).toFixed(1),
+              fat_total: Number(
+                acc.fat_total_g ? acc.calories : 0 + item.fat_total_g
+              ).toFixed(1),
+              cholesterol: Number(
+                acc.cholesterol_mg
+                  ? acc.cholesterol_mg
+                  : 0 + item.cholesterol_mg
+              ).toFixed(1),
+              protein: Number(
+                acc.protein_g ? acc.protein_g : 0 + item.protein_g
+              ).toFixed(1),
+              carbohydrates_total: Number(
+                acc.carbohydrates_total_g
+                  ? acc.carbohydrates_total_g
+                  : 0 + item.carbohydrates_total_g
+              ).toFixed(1),
             };
           }, {});
           setNutrition(totalNutrition);

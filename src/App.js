@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { isLoaded } from "react-redux-firebase";
 import Home from "./components/Home";
 import AlertSnackbar from "./components/AlertSnackbar";
+import UserDiary from "./components/UserDiary";
 
 function App() {
   const classes = useStyles()();
@@ -68,6 +69,9 @@ function App() {
                 </Route>
                 <Route exact path="/user/:id">
                   <UserControlPanel credential={auth} profile={profile} />
+                </Route>
+                <Route exact path="/diary/:id">
+                  <UserDiary credential={auth} profile={profile} />
                 </Route>
               </Switch>
             </main>

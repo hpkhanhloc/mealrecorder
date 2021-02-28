@@ -12,6 +12,7 @@ import {
   ListItem,
 } from "@material-ui/core";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
+import SubjectIcon from "@material-ui/icons/Subject";
 import { useStyles } from "../styles";
 import Logout from "./Logout";
 
@@ -70,6 +71,14 @@ const UserInfo = (props) => {
                     startIcon={<PermIdentityIcon />}
                   >
                     User Info
+                  </Button>
+                </ListItem>
+                <ListItem>
+                  <Button
+                    href={`/diary/${credential.uid}`}
+                    startIcon={<SubjectIcon />}
+                  >
+                    Diary
                   </Button>
                 </ListItem>
                 <ListItem>
